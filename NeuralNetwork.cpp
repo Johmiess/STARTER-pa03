@@ -122,7 +122,6 @@ bool NeuralNetwork::contribute(double y, double p) {
     for(int i =0; i < inputNodeIds.size(); i++){
         contribute(inputNodeIds[i], y,p);
     }
-    flush();
     return true;
 }
 // STUDENT TODO: IMPLEMENT

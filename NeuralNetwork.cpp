@@ -122,6 +122,7 @@ bool NeuralNetwork::contribute(double y, double p) {
     for(int i =0; i < inputNodeIds.size(); i++){
         contribute(inputNodeIds[i], y,p);
     }
+    flush();
     return true;
 }
 // STUDENT TODO: IMPLEMENT
@@ -169,6 +170,7 @@ bool NeuralNetwork::update() {
         nodes[i] -> delta = 0;
         for(auto& [neighborId,connection] : adjacencyList.at(i)){
             connection.weight = connection.weight - (learningRate * connection.delta);
+            connection.delta = 0;
         }
     }
     // apply the derivative contributions
